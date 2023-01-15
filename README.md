@@ -12,3 +12,5 @@ Commands,
 cd back
 
 npm i
+
+npm run server
