@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="main.css">
+
+        <title>Frosty Fights</title>
+    </head>
+    <header>
+        <div class="nav">
+            <h1>Frosty Fights Scheduler</h1>
+            <p>Click <a href="addFight.html">here</a> to add a new fight</p>
+        </div>
+    </header>
+
+    <body>
+        <!-- <div class="grid-container" id="">
+            <div class="grid-item">
+                <div class="name">
+                    Name
+                </div>
+                <div class="middle">
+                    <p class="age" "data">
+                    Age: 14
+                    </p>
+                    <p class="location" "data">
+                    Location: Newton South High School
+                    </p>
+                    <p class="time" "data">
+                    Time: 12:00 pm
+                    </p>
+                </div>
+                <div class="bottom">
+                    <button>Interested</button>
+                    <p class='interested'>
+                    #
+                    </p>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="name">
+                    
+                </div>
+                <div class="middle">
+                    <p class="age" "data">
+                    Age: 14
+                    </p>
+                    <p class="location" "data">
+                    Location: Newton South High School
+                    </p>
+                    <p class="time" "data">
+                    Time: 12:00 pm
+                    </p>
+                </div>
+                <div class="bottom">
+                    <button>Interested</button>
+                    <p class='interested'>
+                    #
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="name">
+                    Name
+                </div>
+                <div class="middle">
+                    <p class="age" "data">
+                    Age: 14
+                    </p>
+                    <p class="location" "data">
+                    Location: Newton South High School
+                    </p>
+                    <p class="time" "data">
+                    Time: 12:00 pm
+                    </p>
+                </div>
+                <div class="bottom">
+                    <button>Interested</button>
+                    <p class='interested'>
+                    #
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <div class="name">
+                    Name
+                </div>
+                <div class="middle">
+                    <p class="age" "data">
+                    Age: 14
+                    </p>
+                    <p class="location" "data">
+                    Location: Newton South High School
+                    </p>
+                    <p class="time" "data">
+                    Time: 12:00 pm
+                    </p>
+                </div>
+                <div class="bottom">
+                    <button>Interested</button>
+                    <p class='interested'>
+                    #
+                    </p>
+                </div>
+            </div>
+        </div>  -->
+        <div class="grid-container">
+
+    
+        </div>
+        <script>
+        async function getFights() {
+            const response = await fetch('http://localhost:3000/fight', {
+                method: 'GET',
+            })
+            fights = await response.json()
+            console.log(fights)
+            var container = document.querySelector('.grid-container');
+            for (let i=0; i<fights.length; i++) {
+                var html = `
+                <div class="grid-item">
+                    <div class="name">
+                        Name: ${fights[i].userName}
+                    </div>
+                    
+                    <div class="middle">
+                        <p class="age" "data">
+                            Age: ${fights[i].userAge}
+                        </p>
+                        <p class="location" "data">
+                            Location: ${fights[i].fightLocation}
+                        </p>
+                        <p class="time" "data">
+                            Time: ${fights[i].userTime}
+                        </p>
+                    </div>
+                    
+                    <div class="bottom">
+
+                    </div>
+
+                </div>
+                `
+                container.insertAdjacentHTML('beforeend', html);
+            }
+        }
+        getFights();
+        </script>
+    </body>
+</html>
+ 

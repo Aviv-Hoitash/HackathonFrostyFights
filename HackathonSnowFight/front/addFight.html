@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="addFight.css">
+
+        <title>Snowball Fight Scheduler</title>
+    </head>
+        
+    <header>
+        <div class="nav">
+            <h1>Frosty Fights Scheduler</h1>
+            <h2>Schedule a snow ball fight!</h2>
+        </div>
+    </header>
+
+    <body>
+
+        <div class="main">
+            <form class="fightForm" id="fightForm" >
+                <div class="section">
+                    <label for="name">Name</label><br>
+                    <input required="required" type="text" id="name" name="userName" placeholder="Full Name"><br>
+                </div>
+
+                <div class="section">
+                    <label for="location">Location</label><br>
+                    <input required="required" type="text" id="location" name="userLocation" placeholder="City"><br>
+                </div>
+
+                <div class="section">
+                    <label for="time">Time</label><br>
+                    <input required="required" type="time" id="time" name="userTime" placeholder="hh:mm"><br>
+                </div>
+
+                <div class="section">
+                    <label for="age">Age</label>
+                    <select id="age" name="age">
+                        <option></option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                    </select>
+                    <input type="submit" id="addFight" value="Submit" >
+                    
+                </div>
+                <!-- / onclick="window.location.href = 'home.html';">  -->
+            </form>
+            <div class="bottom">
+                <p class="back">Back To Home Page</p>
+                <a href="./home.html">
+                    <button class="back">Here</button>
+                </a>
+            </div>
+        </div>
+
+        <script>
+            const button = document.getElementById('addFight');
+            button.addEventListener('click', async _ => { (event)
+             // console.log("async")
+            
+             // const form = document.querySelector('.fightForm');
+             // const formData = new FormData(form);
+             event.preventDefault()
+             try {     
+                 const response = await fetch('http://localhost:3000/fight', {
+                 method: 'POST',
+                 headers:{
+                     "Content-Type":"application/json"
+                 },
+                 body: JSON.stringify({
+                     "name":document.getElementById("name").value,
+                     "time":document.getElementById("time").value,
+                     "age":document.getElementById("age").value,
+                     "location":document.getElementById("location").value,
+                 })
+                 });
+                 console.log(response)
+                 console.log('Completed!', response);
+                 document.getElementById("fightForm").reset();
+                 
+             } catch(err) {
+                 console.error(`Error: ${err}`);
+             }
+             });
+         </script>
+
+    </body>
+      
+</html>
+ 

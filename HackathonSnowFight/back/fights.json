@@ -1,0 +1,14 @@
+[
+    {
+        "userName": "John Doe",
+        "userAge": "9",
+        "fightLocation": "Boston",
+        "userTime": "11:00"
+    },
+    {
+        "userName": "Andrew Smith",
+        "userAge": "11",
+        "fightLocation": "Newton",
+        "userTime": "13:00"
+    }
+]
